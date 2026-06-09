@@ -19,7 +19,8 @@
       "Bash(echo \"EXIT: $?\")",
       "Bash(start *)",
       "Bash(where.exe gh *)",
-      "Bash(gh auth *)"
+      "Bash(gh auth *)",
+      "Bash(gh repo *)"
     ]
   }
 }
