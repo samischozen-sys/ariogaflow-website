@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(run)",
+      "PowerShell(Get-ChildItem *)",
+      "Bash(npm run *)",
+      "PowerShell(Get-Command *)",
+      "PowerShell($env:PATH -split ';' | Where-Object { $_ -match 'node|npm' })",
+      "Bash(where.exe node *)",
+      "Bash(find /c /d -name \"node.exe\")",
+      "Read(//c/Program Files/nodejs//**)",
+      "Read(//c/Users/ariog/AppData/Roaming/**)",
+      "Read(//c/Users/ariog/**)",
+      "Read(//c/Users/ariog/AppData/Local/**)",
+      "Bash(\"/c/Program Files/nodejs/npm.cmd\" run dev)",
+      "Bash(echo \"PID: $!\")",
+      "Bash(\"/c/Program Files/nodejs/npm.cmd\" install)",
+      "Bash(PATH='/c/Program Files/nodejs:__TRACKED_VAR__' '/c/Program Files/nodejs/npm.cmd' install)",
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(start *)",
+      "Bash(where.exe gh *)",
+      "Bash(gh auth *)"
+    ]
+  }
+}
