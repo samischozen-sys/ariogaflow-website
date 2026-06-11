@@ -1,13 +1,3 @@
-export interface ContactFormData {
-  firstName: string
-  lastName: string
-  email: string
-  phone: string
-  company: string
-  monthlyRevenue: string
-  message?: string
-}
-
 export interface RecoverySystem {
   id: number
   name: string

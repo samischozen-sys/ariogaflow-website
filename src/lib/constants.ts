@@ -159,9 +159,3 @@ export const HERO_STATS = [
   { label: 'Close Rate Increase', value: '3×' },
 ]
 
-export const REVENUE_RANGES = [
-  { label: 'Under $20K/month', value: '<20k' },
-  { label: '$20K – $50K/month', value: '20k-50k' },
-  { label: '$50K – $100K/month', value: '50k-100k' },
-  { label: '$100K+/month', value: '100k+' },
-]
