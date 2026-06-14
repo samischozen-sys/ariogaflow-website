@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
+import CalendlyWidget from '@/components/CalendlyWidget'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -39,10 +40,14 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={inter.variable}>
+      <head>
+        <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+      </head>
       <body className="bg-navy-950 text-white antialiased">
         <Navbar />
         <main>{children}</main>
         <Footer />
+        <CalendlyWidget />
       </body>
     </html>
   )
