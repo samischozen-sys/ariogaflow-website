@@ -10,7 +10,7 @@ export default function CalendlyWidget() {
       onLoad={() => {
         ;(window as { Calendly?: { initBadgeWidget: (opts: object) => void } }).Calendly?.initBadgeWidget({
           url: 'https://calendly.com/samischozen/freeaudit',
-          text: 'Free Revenue Audit',
+          text: 'Free Revenue Recovery Audit',
           color: '#0EA5E9',
           textColor: '#ffffff',
           branding: true,
