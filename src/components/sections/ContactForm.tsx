@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { Send, CheckCircle, Loader2 } from 'lucide-react'
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3'
 import Button from '@/components/ui/Button'
 import { REVENUE_RANGES } from '@/lib/constants'
 
@@ -45,6 +46,7 @@ export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [serverError, setServerError] = useState('')
+  const { executeRecaptcha } = useGoogleReCaptcha()
 
   const {
     register,
@@ -53,13 +55,15 @@ export default function ContactForm() {
   } = useForm<FormValues>({ resolver: zodResolver(schema) })
 
   const onSubmit = async (data: FormValues) => {
+    if (!executeRecaptcha) return
     setSubmitting(true)
     setServerError('')
     try {
+      const recaptchaToken = await executeRecaptcha('contact_form')
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, recaptchaToken }),
       })
       if (!res.ok) throw new Error()
       setSubmitted(true)

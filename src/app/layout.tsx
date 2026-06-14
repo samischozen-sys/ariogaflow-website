@@ -4,6 +4,7 @@ import './globals.css'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import CalendlyWidget from '@/components/CalendlyWidget'
+import RecaptchaProvider from '@/components/RecaptchaProvider'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -44,9 +45,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
       </head>
       <body className="bg-navy-950 text-white antialiased">
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
+        <RecaptchaProvider>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+        </RecaptchaProvider>
         <CalendlyWidget />
       </body>
     </html>

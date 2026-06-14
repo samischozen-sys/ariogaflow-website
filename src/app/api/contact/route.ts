@@ -9,6 +9,7 @@ const schema = z.object({
   company: z.string().min(2),
   monthlyRevenue: z.string().min(1),
   message: z.string().optional(),
+  recaptchaToken: z.string().min(1),
 })
 
 const PORTAL_ID = '246446597'
@@ -27,7 +28,20 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Validation failed', issues: result.error.issues }, { status: 422 })
   }
 
-  const { firstName, lastName, email, phone, company, monthlyRevenue, message } = result.data
+  const { firstName, lastName, email, phone, company, monthlyRevenue, message, recaptchaToken } = result.data
+
+  const verifyRes = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams({
+      secret: process.env.RECAPTCHA_SECRET_KEY!,
+      response: recaptchaToken,
+    }),
+  })
+  const verifyData = await verifyRes.json() as { success: boolean; score: number }
+  if (!verifyData.success || verifyData.score < 0.5) {
+    return NextResponse.json({ error: 'reCAPTCHA verification failed' }, { status: 400 })
+  }
 
   const fields: { name: string; value: string }[] = [
     { name: 'firstname', value: firstName },
