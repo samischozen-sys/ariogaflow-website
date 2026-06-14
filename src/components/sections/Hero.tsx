@@ -1,9 +1,9 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Link from 'next/link'
 import { ArrowRight, ChevronDown } from 'lucide-react'
 import Button from '@/components/ui/Button'
+import CalendlyPopupButton from '@/components/CalendlyPopupButton'
 import { HERO_STATS } from '@/lib/constants'
 
 const fadeUp = {
@@ -70,12 +70,10 @@ export default function Hero() {
             variants={fadeUp}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <Button size="lg" asChild>
-              <Link href="/contact">
-                Get Your Free Revenue Recovery Audit
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-            </Button>
+            <CalendlyPopupButton size="lg">
+              Book Your Free Revenue Audit
+              <ArrowRight className="w-5 h-5" />
+            </CalendlyPopupButton>
             <Button variant="ghost" size="lg" asChild>
               <a href="#how-it-works">
                 See How It Works
