@@ -3,6 +3,7 @@ import type { FAQItem, RecoverySystem, Service, WorkflowStep } from '@/types'
 export const NAV_LINKS = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
+  { label: 'Demo', href: '/demo' },
   { label: 'Contact', href: '/contact' },
 ]
 
