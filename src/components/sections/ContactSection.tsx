@@ -2,10 +2,10 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Phone, Clock, Star } from 'lucide-react'
+import { Phone, Clock, Star, Calendar } from 'lucide-react'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import Badge from '@/components/ui/Badge'
-import ContactForm from './ContactForm'
+import CalendlyPopupButton from '@/components/CalendlyPopupButton'
 
 const perks = [
   { icon: Clock, text: 'Response within 24 hours' },
@@ -53,12 +53,26 @@ export default function ContactSection() {
           </div>
         </motion.div>
 
-        {/* Right — form */}
+        {/* Right — Calendly CTA */}
         <motion.div
           variants={{ hidden: { opacity: 0, x: 30 }, visible: { opacity: 1, x: 0, transition: { duration: 0.6 } } }}
           className="bg-navy-800 border border-navy-700 rounded-2xl p-6 sm:p-8"
         >
-          <ContactForm />
+          <div className="flex flex-col items-center justify-center text-center gap-6 py-8">
+            <div className="w-16 h-16 rounded-full bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center">
+              <Calendar className="w-8 h-8 text-cyan-400" />
+            </div>
+            <div>
+              <h3 className="text-xl font-bold text-white mb-2">Book Your Free Audit</h3>
+              <p className="text-slate-400 text-sm leading-relaxed max-w-xs mx-auto">
+                Pick a time that works for you. We&apos;ll dig into your numbers and show you exactly where you&apos;re leaving money on the table.
+              </p>
+            </div>
+            <CalendlyPopupButton size="lg" className="w-full">
+              Book My Free Revenue Recovery Audit
+            </CalendlyPopupButton>
+            <p className="text-xs text-slate-600">No spam. No pressure. Just a 30-minute call to find your leaks.</p>
+          </div>
         </motion.div>
       </motion.div>
     </SectionWrapper>

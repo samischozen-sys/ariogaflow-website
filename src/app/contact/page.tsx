@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
-import { Clock, Phone, CheckCircle } from 'lucide-react'
+import { Clock, Phone, CheckCircle, Calendar } from 'lucide-react'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import Badge from '@/components/ui/Badge'
-import ContactForm from '@/components/sections/ContactForm'
+import CalendlyPopupButton from '@/components/CalendlyPopupButton'
 
 export const metadata: Metadata = {
   title: 'Book Free Audit | AriogaFlow',
@@ -69,10 +69,23 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Right — form */}
+          {/* Right — Calendly CTA */}
           <div className="bg-navy-800 border border-navy-700 rounded-2xl p-6 sm:p-8">
-            <h2 className="text-xl font-bold text-white mb-6">Book Your Free Audit</h2>
-            <ContactForm />
+            <div className="flex flex-col items-center justify-center text-center gap-6 py-8">
+              <div className="w-16 h-16 rounded-full bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center">
+                <Calendar className="w-8 h-8 text-cyan-400" />
+              </div>
+              <div>
+                <h2 className="text-xl font-bold text-white mb-2">Book Your Free Audit</h2>
+                <p className="text-slate-400 text-sm leading-relaxed max-w-xs mx-auto">
+                  Pick a time that works for you. We&apos;ll dig into your numbers and show you exactly where you&apos;re leaving money on the table.
+                </p>
+              </div>
+              <CalendlyPopupButton size="lg" className="w-full">
+                Book My Free Revenue Recovery Audit
+              </CalendlyPopupButton>
+              <p className="text-xs text-slate-600">No spam. No pressure. Just a 30-minute call to find your leaks.</p>
+            </div>
           </div>
         </div>
       </SectionWrapper>
